@@ -1,0 +1,38 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+class RoundedButton extends StatelessWidget{
+final String btn_Name;
+final Icon?icon;
+final Color bgcolor;
+final TextStyle? textStyle;
+final VoidCallback? callback;
+
+RoundedButton({required this.btn_Name,
+  this.icon,
+  this.bgcolor=Colors.orange,
+  this.textStyle,
+  this.callback});
+@override
+  Widget build(BuildContext context) {
+    return ElevatedButton(onPressed: () {
+      callback!();
+    }, child: icon!=null ? Row(
+      children: [
+        icon!,
+        Text(btn_Name,style: textStyle,)
+      ],
+    ):Text(btn_Name,style:textStyle ,),
+      style: ElevatedButton.styleFrom(
+        backgroundColor: bgcolor,
+        shadowColor: bgcolor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(21),
+          )
+        ),
+      ),
+    );
+  }
+
+}
